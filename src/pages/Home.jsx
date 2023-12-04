@@ -1,5 +1,11 @@
+import { Search } from '../components/index';
+
 const Home = () => {
-	return <div>Home</div>;
+	return (
+		<div className='page-layout'>
+			<Search />
+		</div>
+	);
 };
 
 export default Home;

@@ -4,3 +4,13 @@
 	grid-template-columns: 1fr;
 	grid-template-rows: auto 1fr;
 }
+
+.page-layout {
+	padding: 32px 16px;
+}
+
+@include desktop {
+	.page-layout {
+		padding: 32px;
+	}
+}
