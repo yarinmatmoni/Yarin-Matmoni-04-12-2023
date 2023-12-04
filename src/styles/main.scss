@@ -1,5 +1,4 @@
 // SETUP
-@import './setup/functions';
 @import './setup/mixins';
 @import './setup/variables';
 
@@ -8,3 +7,4 @@
 @import './base/layout';
 
 // COMPONENTS
+@import './components/header.scss';
