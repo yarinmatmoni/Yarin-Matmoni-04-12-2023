@@ -15,7 +15,7 @@
 		img {
 			height: 80px;
 			width: 80px;
-			object-fit: fill;
+			object-fit: cover;
 		}
 
 		.favorite-icon {
@@ -30,8 +30,4 @@
 		align-items: center;
 		justify-content: center;
 	}
-
-	// .forecast-future {
-
-	// }
 }

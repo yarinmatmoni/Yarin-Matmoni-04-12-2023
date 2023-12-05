@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import Favorite from '../assets/svg/favorite-svg.svg';
+import { CardContainer } from './index';
 
 const Forecast = () => {
 	const locationData = useSelector((storeState) => storeState.locationData);
@@ -20,15 +21,8 @@ const Forecast = () => {
 					<img src={Favorite} alt='Favorite' className='favorite-icon' />
 				</div>
 				<div className='forecast-title'>{currentWeather.text}</div>
-				<div className='forecast-future'>
-					<div>Card</div>
-					<div>Card</div>
-					<div>Card</div>
-					<div>Card</div>
-					<div>Card</div>
-					<div>Card</div>
-				</div>
 			</div>
+			<CardContainer />
 		</>
 	) : (
 		<div>Loading...</div>

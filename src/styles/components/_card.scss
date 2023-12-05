@@ -1,0 +1,23 @@
+.card {
+	background-color: $white-color;
+	gap: 15px;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: auto 1fr;
+	grid-template-rows: 1fr;
+	align-items: center;
+	cursor: pointer;
+	padding: 8px;
+
+	img {
+		height: 50px;
+		width: 50px;
+	}
+
+	.details {
+		.day,
+		.temp {
+			font-size: 18px;
+		}
+	}
+}
