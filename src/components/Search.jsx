@@ -1,9 +1,6 @@
-import { useSelector } from 'react-redux';
 import { setInputSearch } from '../store/actions/weather.action';
 
-const Search = () => {
-	const inputSearch = useSelector((storeState) => storeState.search);
-
+const Search = ({ inputSearch }) => {
 	const handleOnChange = (event) => {
 		setInputSearch(event.target.value);
 	};
