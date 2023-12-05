@@ -40,6 +40,15 @@ input[type='text'] {
 	width: 100%;
 }
 
+button {
+	border: none;
+	padding: 8px;
+	border-radius: 4px;
+	outline: none;
+	background-color: $primary-color;
+	color: $white-color;
+}
+
 @include desktop {
 	h1 {
 		font-size: 32px;

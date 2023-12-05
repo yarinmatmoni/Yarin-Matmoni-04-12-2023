@@ -1,18 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Search, Forecast } from '../components/index';
-import { useSelector } from 'react-redux';
-import { loadWeather } from '../store/actions/weather.action';
+import { loadLocationData } from '../store/actions/weather.action';
 
 const Home = () => {
-	const inputSearch = useSelector((storeState) => storeState.search);
+	const [input, setInput] = useState('Tel Aviv');
 
 	useEffect(() => {
-		loadWeather();
-	}, [inputSearch]);
+		loadLocationData(input);
+	}, []);
 
 	return (
 		<div className='page-layout home'>
-			<Search inputSearch={inputSearch} />
+			<Search input={input} setInput={setInput} />
 			<Forecast />
 		</div>
 	);

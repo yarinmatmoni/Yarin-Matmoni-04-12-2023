@@ -1,13 +1,18 @@
-import { setInputSearch } from '../store/actions/weather.action';
+import { loadLocationData } from '../store/actions/weather.action';
 
-const Search = ({ inputSearch }) => {
+const Search = ({ input, setInput }) => {
 	const handleOnChange = (event) => {
-		setInputSearch(event.target.value);
+		setInput(() => event.target.value);
+	};
+
+	const handleOnClick = () => {
+		loadLocationData(input);
 	};
 
 	return (
 		<div className='search'>
-			<input type='text' placeholder='Search...' value={inputSearch} onChange={handleOnChange} />
+			<input type='text' placeholder='Search...' value={input} onChange={handleOnChange} />
+			<button onClick={handleOnClick}>Search</button>
 		</div>
 	);
 };
