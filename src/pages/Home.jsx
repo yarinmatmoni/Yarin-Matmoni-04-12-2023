@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Search, Forecast } from '../components/index';
-import { loadLocationData } from '../store/actions/weather.action';
+import { loadWeatherData } from '../store/actions/weather.action';
 
 const Home = () => {
 	const [input, setInput] = useState('Tel Aviv');
 
 	useEffect(() => {
-		loadLocationData(input);
+		loadWeatherData(input);
 	}, []);
 
 	return (

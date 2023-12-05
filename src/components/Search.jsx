@@ -1,4 +1,4 @@
-import { loadLocationData } from '../store/actions/weather.action';
+import { loadWeatherData } from '../store/actions/weather.action';
 
 const Search = ({ input, setInput }) => {
 	const handleOnChange = (event) => {
@@ -6,7 +6,7 @@ const Search = ({ input, setInput }) => {
 	};
 
 	const handleOnClick = () => {
-		loadLocationData(input);
+		loadWeatherData(input);
 	};
 
 	return (

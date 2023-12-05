@@ -47,6 +47,7 @@ button {
 	outline: none;
 	background-color: $primary-color;
 	color: $white-color;
+	cursor: pointer;
 }
 
 @include desktop {
