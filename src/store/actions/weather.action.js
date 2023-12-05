@@ -7,7 +7,7 @@ export const setInputSearch = (inputValue) => {
 
 export const loadWeather = async () => {
 	const locationId = await getLocationData();
-	getCurrentWeather(locationId);
+	await getCurrentWeather(locationId);
 };
 
 const getLocationData = async () => {
