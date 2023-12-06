@@ -1,11 +1,14 @@
 export const SET_LOCATION_DATA = 'SET_LOCATION_DATA';
 export const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER';
 export const SET_FUTURE_WEATHER = 'SET_FUTURE_WEATHER';
+export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 
 const initialState = {
 	locationData: null,
 	currentWeather: null,
 	futureWeather: [],
+	favorites: [],
 };
 
 export const weatherReducer = (state = initialState, action = {}) => {
@@ -24,6 +27,11 @@ export const weatherReducer = (state = initialState, action = {}) => {
 			return {
 				...state,
 				futureWeather: action.futureWeather,
+			};
+		case ADD_FAVORITE:
+			return {
+				...state,
+				favorites: [...state.favorites, action.favorite],
 			};
 		default:
 			return state;

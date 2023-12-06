@@ -1,4 +1,4 @@
-import { SET_LOCATION_DATA, SET_CURRENT_WEATHER, SET_FUTURE_WEATHER } from '../reducers/weather.reducer';
+import { SET_LOCATION_DATA, SET_CURRENT_WEATHER, SET_FUTURE_WEATHER, ADD_FAVORITE } from '../reducers/weather.reducer';
 import { weatherService } from '../../services/weather.service';
 import { store } from '../store';
 
@@ -8,6 +8,11 @@ export const loadWeatherData = async (input) => {
 	loadFutureWeather();
 };
 
+export const addToFavorite = (city) => {
+	store.dispatch({ type: ADD_FAVORITE, favorite: city });
+};
+
+// PRIVATE FUNCTIONS
 const loadLocationData = async (input) => {
 	try {
 		const locationResponse = await fetch(
