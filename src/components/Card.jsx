@@ -9,12 +9,10 @@ const Card = ({ data }) => {
 				<div className='temp-item'>
 					<img src={MinTemp} alt='Min temp' />
 					{data.minTemp}
-					<span>C</span>
 				</div>
 				<div className='temp-item'>
 					<img src={MaxTemp} alt='Max temp' />
 					{data.maxTemp}
-					<span>C</span>
 				</div>
 			</div>
 		</div>

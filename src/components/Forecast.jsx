@@ -15,12 +15,12 @@ const Forecast = () => {
 						alt='Forecast icon'
 					/>
 					<div className='forecast-description'>
-						<p>{locationData.city}</p>
-						<p>{currentWeather.temp}</p>
+						<div className='city'>{locationData.city}</div>
+						<div className='forecast-title'>{currentWeather.text}</div>
+						<div className='temp'>{currentWeather.temp}</div>
 					</div>
 					<img src={Favorite} alt='Favorite' className='favorite-icon' />
 				</div>
-				<div className='forecast-title'>{currentWeather.text}</div>
 			</div>
 			<CardContainer />
 		</>
