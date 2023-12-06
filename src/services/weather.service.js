@@ -1,3 +1,13 @@
+const makeId = () => {
+	let text = '';
+	const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+	for (let i = 0; i < 5; i++) {
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return text;
+};
+
 const fahrenheitToCelsius = (f) => {
 	const celsius = ((f - 32) * (5 / 9)).toFixed(1);
 	return celsius;
@@ -10,4 +20,4 @@ const getDayOfWeekFromDate = (date) => {
 	return dayOfWeek;
 };
 
-export const weatherService = { fahrenheitToCelsius, getDayOfWeekFromDate };
+export const weatherService = { makeId, fahrenheitToCelsius, getDayOfWeekFromDate };

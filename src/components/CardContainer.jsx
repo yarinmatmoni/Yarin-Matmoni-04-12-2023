@@ -1,13 +1,14 @@
+import { useSelector } from 'react-redux';
 import { Card } from './index';
 
 const CardContainer = () => {
+	const futureWeather = useSelector((storeState) => storeState.futureWeather);
+
 	return (
 		<div className='card-container'>
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
+			{futureWeather?.map((day) => (
+				<Card key={day.id} data={day} />
+			))}
 		</div>
 	);
 };

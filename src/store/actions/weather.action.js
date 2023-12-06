@@ -60,6 +60,7 @@ const loadFutureWeather = async () => {
 			const futureWeather = await futureWeatherResponse.json();
 
 			const futureWeatherArray = futureWeather.DailyForecasts.map((weather) => ({
+				id: weatherService.makeId(),
 				date: weatherService.getDayOfWeekFromDate(weather.Date),
 				minTemp: weatherService.fahrenheitToCelsius(weather.Temperature.Minimum.Value),
 				maxTemp: weatherService.fahrenheitToCelsius(weather.Temperature.Maximum.Value),

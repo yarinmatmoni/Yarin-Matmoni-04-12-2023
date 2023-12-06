@@ -1,12 +1,21 @@
-import Logo from '../assets/svg/logo-svg.svg';
+import MinTemp from '../assets/svg/minTemp-svg.svg';
+import MaxTemp from '../assets/svg/maxTamp-svg.svg';
 
-const Card = () => {
+const Card = ({ data }) => {
 	return (
 		<div className='card'>
-			<img src={Logo} alt='Weather icon' />
-			<div className='details'>
-				<div className='day'>Day</div>
-				<div className='temp'>Temp</div>
+			<div className='day'>{data.date}</div>
+			<div className='temp'>
+				<div className='temp-item'>
+					<img src={MinTemp} alt='Min temp' />
+					{data.minTemp}
+					<span>C</span>
+				</div>
+				<div className='temp-item'>
+					<img src={MaxTemp} alt='Max temp' />
+					{data.maxTemp}
+					<span>C</span>
+				</div>
 			</div>
 		</div>
 	);
