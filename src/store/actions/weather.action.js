@@ -1,4 +1,5 @@
 import { SET_LOCATION_DATA, SET_CURRENT_WEATHER, SET_FUTURE_WEATHER } from '../reducers/weather.reducer';
+import { weatherService } from '../../services/weather.service';
 import { store } from '../store';
 
 export const loadWeatherData = async (input) => {
@@ -58,9 +59,15 @@ const loadFutureWeather = async () => {
 		if (futureWeatherResponse.status === 200) {
 			const futureWeather = await futureWeatherResponse.json();
 
+			const futureWeatherArray = futureWeather.DailyForecasts.map((weather) => ({
+				date: weatherService.getDayOfWeekFromDate(weather.Date),
+				minTemp: weatherService.fahrenheitToCelsius(weather.Temperature.Minimum.Value),
+				maxTemp: weatherService.fahrenheitToCelsius(weather.Temperature.Maximum.Value),
+			}));
+
 			store.dispatch({
 				type: SET_FUTURE_WEATHER,
-				futureWeather: futureWeather.DailyForecasts,
+				futureWeather: futureWeatherArray,
 			});
 		}
 	} catch (error) {
