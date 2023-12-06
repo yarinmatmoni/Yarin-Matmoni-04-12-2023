@@ -2,7 +2,6 @@
 	background-color: $white-color;
 	padding: 12px;
 	display: flex;
-	align-items: center;
 	justify-content: space-evenly;
 	flex-direction: column;
 	border-radius: 4px;
@@ -10,13 +9,14 @@
 
 	.day {
 		font-size: 20px;
-		text-align: center;
 	}
 
 	.temp {
 		width: 100%;
 		display: flex;
-		justify-content: space-around;
+		flex-direction: column;
+		gap: 10px;
+		margin-top: 10px;
 
 		.temp-item {
 			display: flex;

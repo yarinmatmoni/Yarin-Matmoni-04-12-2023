@@ -1,7 +1,7 @@
 .home {
 	height: calc(100vh - $header-h-mobile);
 	display: grid;
-	grid-template-rows: auto auto 1fr;
+	grid-template-rows: auto 1fr;
 	gap: 20px;
 }
 

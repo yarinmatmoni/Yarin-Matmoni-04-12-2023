@@ -7,6 +7,7 @@ const Search = ({ input, setInput }) => {
 
 	const handleOnClick = () => {
 		loadWeatherData(input);
+		setInput('');
 	};
 
 	return (

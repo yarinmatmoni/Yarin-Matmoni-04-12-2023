@@ -5,5 +5,7 @@
 @include desktop {
 	.page-layout {
 		padding: 32px;
+		max-width: 550px;
+		margin: auto;
 	}
 }
