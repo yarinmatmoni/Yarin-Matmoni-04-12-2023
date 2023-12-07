@@ -33,7 +33,6 @@ export const initStorage = () => {
 };
 
 // PRIVATE FUNCTIONS
-
 const loadLocationData = async (input) => {
 	try {
 		const locationResponse = await fetch(

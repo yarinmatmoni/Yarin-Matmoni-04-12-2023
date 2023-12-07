@@ -6,9 +6,23 @@
 	border-radius: 4px;
 	padding: 8px;
 
-	.fav-card-title {
-		font-size: 20px;
-		font-weight: bold;
+	.fav-card-details {
+		.fav-card-title {
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.fav-card-weather {
+			.fav-card-temp {
+				color: $primary-color;
+
+				&::after {
+					margin-left: 3px;
+					content: '\2103';
+					color: $primary-color;
+				}
+			}
+		}
 	}
 
 	img {
