@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
 import { removeFromFavorite } from '../store/actions/weather.action';
+import { weatherService } from '../services/weather.service';
 
 const FavoriteCard = ({ data }) => {
 	const [weather, setWeather] = useState(null);
@@ -12,17 +13,7 @@ const FavoriteCard = ({ data }) => {
 	}, []);
 
 	const getFavoriteWeather = async (cityId) => {
-		try {
-			const currentWeatherResponse = await fetch(
-				`http://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
-			);
-			if (currentWeatherResponse.status === 200) {
-				const currentWeather = await currentWeatherResponse.json();
-				setWeather({ temp: currentWeather[0].Temperature.Metric.Value, text: currentWeather[0].WeatherText });
-			}
-		} catch (error) {
-			console.log('error:', error);
-		}
+		setWeather(await weatherService.getWeather(cityId));
 	};
 
 	const onSelectCard = (id, city) => {
@@ -30,7 +21,6 @@ const FavoriteCard = ({ data }) => {
 	};
 
 	const onSetFavorite = (event, id) => {
-		console.log(event);
 		event.stopPropagation();
 		removeFromFavorite(id);
 	};

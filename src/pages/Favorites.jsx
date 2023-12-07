@@ -13,7 +13,7 @@ const Favorites = () => {
 	return (
 		<div className='page-layout'>
 			<h1>My favorites list</h1>
-			<FavoritesContainer favorites={favorites} />
+			{favorites ? <FavoritesContainer favorites={favorites} /> : <div>Loading...</div>}
 		</div>
 	);
 };

@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import FavoriteEmpty from '../assets/svg/favorite-empty-svg.svg';
 import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
 import { addToFavorite, removeFromFavorite } from '../store/actions/weather.action';
 import { CardContainer } from './index';
 
 const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
-	isEexistInFavorites(locationData.id);
+	useEffect(() => {
+		isEexistInFavorites(locationData.id);
+	}, []);
 
 	const handleOnClick = () => {
 		if (!isEexistInFavorites(locationData.id)) addToFavorite({ locationData });
