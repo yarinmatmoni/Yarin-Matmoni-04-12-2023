@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
 import { removeFromFavorite } from '../store/actions/weather.action';
 
 const FavoriteCard = ({ data }) => {
 	const [weather, setWeather] = useState(null);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getFavoriteWeather(data.locationData.id);
@@ -23,10 +25,20 @@ const FavoriteCard = ({ data }) => {
 		}
 	};
 
+	const onSelectCard = (id, city) => {
+		navigate('/', { state: { id, city } });
+	};
+
+	const onSetFavorite = (event, id) => {
+		console.log(event);
+		event.stopPropagation();
+		removeFromFavorite(id);
+	};
+
 	return (
 		weather && (
 			<>
-				<div className='fav-card'>
+				<div className='fav-card' onClick={() => onSelectCard(data.locationData.id, data.locationData.city)}>
 					<div className='fav-card-details'>
 						<div className='fav-card-title'>{data.locationData.city}</div>
 						<div className='fav-card-weather'>
@@ -34,7 +46,7 @@ const FavoriteCard = ({ data }) => {
 							<div className='fav-card-temp'>{weather.temp}</div>
 						</div>
 					</div>
-					<img src={FavoriteFull} alt='Favorite Icon' onClick={() => removeFromFavorite(data.locationData.id)} />
+					<img src={FavoriteFull} alt='Favorite Icon' onClick={(event) => onSetFavorite(event, data.locationData.id)} />
 				</div>
 			</>
 		)

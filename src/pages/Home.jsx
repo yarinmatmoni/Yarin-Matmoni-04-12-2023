@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Search, Forecast } from '../components/index';
-import { loadWeatherData } from '../store/actions/weather.action';
+import { loadFavoriteData, loadWeatherData } from '../store/actions/weather.action';
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
 	const [input, setInput] = useState('Tel Aviv');
+	const { state } = useLocation();
 
 	useEffect(() => {
-		loadWeatherData(input);
+		if (!state) loadWeatherData(input);
+		else loadFavoriteData(state);
 	}, []);
 
 	const locationData = useSelector((storeState) => storeState.locationData);

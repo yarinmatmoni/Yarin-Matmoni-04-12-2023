@@ -17,6 +17,16 @@ export const loadWeatherData = async (input) => {
 	loadFutureWeather();
 };
 
+export const loadFavoriteData = async (data) => {
+	const { id, city } = data;
+
+	if (id) {
+		loadLocationData(city);
+		loadCurrentWeather(id);
+		loadFutureWeather(id);
+	}
+};
+
 export const addToFavorite = (city) => {
 	storageService.save(city);
 	store.dispatch({ type: ADD_FAVORITE, favorite: city });
@@ -52,9 +62,9 @@ const loadLocationData = async (input) => {
 	}
 };
 
-const loadCurrentWeather = async () => {
+const loadCurrentWeather = async (cityId) => {
 	try {
-		const id = store.getState().locationData.id;
+		const id = cityId ? cityId : store.getState().locationData.id;
 		const currentWeatherResponse = await fetch(
 			`http://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
 		);
@@ -74,9 +84,9 @@ const loadCurrentWeather = async () => {
 	}
 };
 
-const loadFutureWeather = async () => {
+const loadFutureWeather = async (cityId) => {
 	try {
-		const id = store.getState().locationData.id;
+		const id = cityId ? cityId : store.getState().locationData.id;
 		const futureWeatherResponse = await fetch(
 			`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${id}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
 		);
