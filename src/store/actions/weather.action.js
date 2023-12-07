@@ -27,11 +27,12 @@ export const removeFromFavorite = (cityId) => {
 	store.dispatch({ type: REMOVE_FAVORITE, id: cityId });
 };
 
-// PRIVATE FUNCTIONS
-const initStorage = () => {
+export const initStorage = () => {
 	const storageData = storageService.initLocalStorage();
 	store.dispatch({ type: SET_FAVORITES, favorites: storageData });
 };
+
+// PRIVATE FUNCTIONS
 
 const loadLocationData = async (input) => {
 	try {

@@ -1,7 +1,13 @@
 import { useSelector } from 'react-redux';
 import { FavoritesContainer } from '../components/index';
+import { useEffect } from 'react';
+import { initStorage } from '../store/actions/weather.action';
 
 const Favorites = () => {
+	useEffect(() => {
+		initStorage();
+	}, []);
+
 	const favorites = useSelector((storeState) => storeState.favorites);
 
 	return (

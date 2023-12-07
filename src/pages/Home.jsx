@@ -5,13 +5,14 @@ import { loadWeatherData } from '../store/actions/weather.action';
 
 const Home = () => {
 	const [input, setInput] = useState('Tel Aviv');
-	const locationData = useSelector((storeState) => storeState.locationData);
-	const currentWeather = useSelector((storeState) => storeState.currentWeather);
-	const favorites = useSelector((storeState) => storeState.favorites);
 
 	useEffect(() => {
 		loadWeatherData(input);
 	}, []);
+
+	const locationData = useSelector((storeState) => storeState.locationData);
+	const currentWeather = useSelector((storeState) => storeState.currentWeather);
+	const favorites = useSelector((storeState) => storeState.favorites);
 
 	const isEexistInFavorites = (cityId) => {
 		return favorites.some((favorite) => favorite.locationData.id === cityId);
