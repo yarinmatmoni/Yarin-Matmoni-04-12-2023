@@ -1,4 +1,5 @@
 import { loadWeatherData } from '../store/actions/weather.action';
+import { weatherService } from '../services/weather.service';
 
 const Search = ({ input, setInput }) => {
 	const handleOnChange = (event) => {
@@ -6,13 +7,22 @@ const Search = ({ input, setInput }) => {
 	};
 
 	const handleOnClick = () => {
-		loadWeatherData(input);
-		setInput('');
+		const isValid = weatherService.isValidSearch(input);
+		if (isValid) {
+			loadWeatherData(input);
+			setInput('');
+		} else console.log('Error');
+	};
+
+	const handleOnEnter = (event) => {
+		if (event.key === 'Enter') {
+			handleOnClick();
+		}
 	};
 
 	return (
 		<div className='search'>
-			<input type='text' placeholder='Search...' value={input} onChange={handleOnChange} />
+			<input type='text' placeholder='Search...' value={input} onChange={handleOnChange} onKeyDown={handleOnEnter} />
 			<button onClick={handleOnClick}>Search</button>
 		</div>
 	);

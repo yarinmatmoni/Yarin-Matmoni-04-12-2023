@@ -8,6 +8,14 @@ const makeId = () => {
 	return text;
 };
 
+const isValidSearch = (input) => {
+	if (input !== '') {
+		const englishTemplate = /^[A-Za-z ]*$/;
+		return englishTemplate.test(input);
+	}
+	return false;
+};
+
 const fahrenheitToCelsius = (f) => {
 	const celsius = ((f - 32) * (5 / 9)).toFixed(1);
 	return celsius;
@@ -20,4 +28,4 @@ const getDayOfWeekFromDate = (date) => {
 	return dayOfWeek;
 };
 
-export const weatherService = { makeId, fahrenheitToCelsius, getDayOfWeekFromDate };
+export const weatherService = { makeId, fahrenheitToCelsius, getDayOfWeekFromDate, isValidSearch };
