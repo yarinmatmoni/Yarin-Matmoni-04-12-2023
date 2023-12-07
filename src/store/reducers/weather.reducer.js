@@ -39,6 +39,11 @@ export const weatherReducer = (state = initialState, action = {}) => {
 				...state,
 				favorites: [...state.favorites, action.favorite],
 			};
+		case REMOVE_FAVORITE:
+			return {
+				...state,
+				favorites: state.favorites.filter((favorite) => favorite.id !== action.id),
+			};
 		default:
 			return state;
 	}

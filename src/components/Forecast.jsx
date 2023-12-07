@@ -1,13 +1,14 @@
 import FavoriteEmpty from '../assets/svg/favorite-empty-svg.svg';
 import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
-import { addToFavorite } from '../store/actions/weather.action';
+import { addToFavorite, removeFromFavorite } from '../store/actions/weather.action';
 import { CardContainer } from './index';
 
 const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
 	isEexistInFavorites(locationData.id);
 
 	const handleOnClick = () => {
-		addToFavorite({ locationData });
+		if (!isEexistInFavorites(locationData.id)) addToFavorite({ locationData });
+		else removeFromFavorite(locationData.id);
 	};
 
 	return (

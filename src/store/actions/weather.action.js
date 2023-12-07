@@ -4,6 +4,7 @@ import {
 	SET_FUTURE_WEATHER,
 	ADD_FAVORITE,
 	SET_FAVORITES,
+	REMOVE_FAVORITE,
 } from '../reducers/weather.reducer';
 import { weatherService } from '../../services/weather.service';
 import { storageService } from '../../services/storage.service';
@@ -19,6 +20,11 @@ export const loadWeatherData = async (input) => {
 export const addToFavorite = (city) => {
 	storageService.save(city);
 	store.dispatch({ type: ADD_FAVORITE, favorite: city });
+};
+
+export const removeFromFavorite = (cityId) => {
+	storageService.remove(cityId);
+	store.dispatch({ type: REMOVE_FAVORITE, favorite: cityId });
 };
 
 // PRIVATE FUNCTIONS
