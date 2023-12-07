@@ -5,7 +5,7 @@ import { CardContainer } from './index';
 
 const Forecast = ({ locationData, currentWeather }) => {
 	const handleOnClick = () => {
-		addToFavorite(locationData);
+		addToFavorite({ locationData });
 	};
 
 	return (

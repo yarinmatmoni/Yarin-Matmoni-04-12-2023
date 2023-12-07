@@ -1,0 +1,14 @@
+.fav-card {
+	background-color: $white-color;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 1fr auto;
+	border-radius: 4px;
+	padding: 8px;
+
+	img {
+		height: 30px;
+		width: 30px;
+		cursor: pointer;
+	}
+}

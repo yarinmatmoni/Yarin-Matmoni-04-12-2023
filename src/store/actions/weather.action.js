@@ -1,18 +1,32 @@
-import { SET_LOCATION_DATA, SET_CURRENT_WEATHER, SET_FUTURE_WEATHER, ADD_FAVORITE } from '../reducers/weather.reducer';
+import {
+	SET_LOCATION_DATA,
+	SET_CURRENT_WEATHER,
+	SET_FUTURE_WEATHER,
+	ADD_FAVORITE,
+	SET_FAVORITES,
+} from '../reducers/weather.reducer';
 import { weatherService } from '../../services/weather.service';
+import { storageService } from '../../services/storage.service';
 import { store } from '../store';
 
 export const loadWeatherData = async (input) => {
+	initStorage();
 	await loadLocationData(input);
 	loadCurrentWeather();
 	loadFutureWeather();
 };
 
 export const addToFavorite = (city) => {
+	storageService.save(city);
 	store.dispatch({ type: ADD_FAVORITE, favorite: city });
 };
 
 // PRIVATE FUNCTIONS
+const initStorage = () => {
+	const storageData = storageService.initLocalStorage();
+	store.dispatch({ type: SET_FAVORITES, favorites: storageData });
+};
+
 const loadLocationData = async (input) => {
 	try {
 		const locationResponse = await fetch(
