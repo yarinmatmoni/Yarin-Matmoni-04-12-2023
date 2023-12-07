@@ -13,8 +13,8 @@ const Home = () => {
 		loadWeatherData(input);
 	}, []);
 
-	const isEexistInFavorites = (placeId) => {
-		return favorites.some((favorite) => favorite.locationData.id === placeId);
+	const isEexistInFavorites = (cityId) => {
+		return favorites.some((favorite) => favorite.locationData.id === cityId);
 	};
 
 	return (

@@ -24,7 +24,7 @@ export const addToFavorite = (city) => {
 
 export const removeFromFavorite = (cityId) => {
 	storageService.remove(cityId);
-	store.dispatch({ type: REMOVE_FAVORITE, favorite: cityId });
+	store.dispatch({ type: REMOVE_FAVORITE, id: cityId });
 };
 
 // PRIVATE FUNCTIONS
