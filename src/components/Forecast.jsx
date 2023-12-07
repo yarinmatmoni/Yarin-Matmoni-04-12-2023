@@ -1,9 +1,11 @@
 import FavoriteEmpty from '../assets/svg/favorite-empty-svg.svg';
-// import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
+import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
 import { addToFavorite } from '../store/actions/weather.action';
 import { CardContainer } from './index';
 
-const Forecast = ({ locationData, currentWeather }) => {
+const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
+	isEexistInFavorites(locationData.id);
+
 	const handleOnClick = () => {
 		addToFavorite({ locationData });
 	};
@@ -20,7 +22,12 @@ const Forecast = ({ locationData, currentWeather }) => {
 					<div className='forecast-title'>{currentWeather.text}</div>
 					<div className='temp'>{currentWeather.temp}</div>
 				</div>
-				<img src={FavoriteEmpty} alt='Favorite' onClick={handleOnClick} className='favorite-icon' />
+				<img
+					src={isEexistInFavorites(locationData.id) ? FavoriteFull : FavoriteEmpty}
+					alt='Favorite'
+					onClick={handleOnClick}
+					className='favorite-icon'
+				/>
 			</div>
 			<CardContainer />
 		</div>
