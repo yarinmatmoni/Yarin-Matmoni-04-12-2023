@@ -42,4 +42,20 @@ const getWeather = async (cityId) => {
 	}
 };
 
-export const weatherService = { makeId, fahrenheitToCelsius, getDayOfWeekFromDate, isValidSearch, getWeather };
+const loadDynamicImage = async (iconId) => {
+	try {
+		const weatherIconModule = await import(`../assets/weatherIcons/${iconId}.svg`);
+		return weatherIconModule.default;
+	} catch (error) {
+		console.error('Error loading weather icon:', error);
+	}
+};
+
+export const weatherService = {
+	makeId,
+	fahrenheitToCelsius,
+	getDayOfWeekFromDate,
+	isValidSearch,
+	getWeather,
+	loadDynamicImage,
+};
