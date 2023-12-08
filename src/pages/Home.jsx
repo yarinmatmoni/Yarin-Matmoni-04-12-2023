@@ -18,7 +18,7 @@ const Home = () => {
 	const favorites = useSelector((storeState) => storeState.favorites);
 
 	const isEexistInFavorites = (cityId) => {
-		return favorites.some((favorite) => favorite.locationData.id === cityId);
+		if (favorites?.length > 0) return favorites?.some((favorite) => favorite.locationData.id === cityId);
 	};
 
 	return (

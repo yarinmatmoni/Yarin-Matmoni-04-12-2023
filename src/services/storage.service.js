@@ -2,8 +2,10 @@ const FAVORITES = 'favorites';
 
 const initLocalStorage = () => {
 	const exist = localStorage.getItem(FAVORITES);
-	if (!exist) localStorage.setItem(FAVORITES, JSON.stringify([]));
-	else return JSON.parse(exist);
+	if (!exist) {
+		localStorage.setItem(FAVORITES, JSON.stringify([]));
+		return [];
+	} else return JSON.parse(exist);
 };
 
 const save = (city) => {

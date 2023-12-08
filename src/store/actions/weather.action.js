@@ -3,7 +3,6 @@ import {
 	SET_CURRENT_WEATHER,
 	SET_FUTURE_WEATHER,
 	ADD_FAVORITE,
-	SET_FAVORITES,
 	REMOVE_FAVORITE,
 } from '../reducers/weather.reducer';
 import { weatherService } from '../../services/weather.service';
@@ -11,13 +10,12 @@ import { storageService } from '../../services/storage.service';
 import { store } from '../store';
 
 export const loadWeatherData = async (input) => {
-	initStorage();
 	await loadLocationData(input);
 	loadCurrentWeather();
 	loadFutureWeather();
 };
 
-export const loadFavoriteData = async (data) => {
+export const loadFavoriteData = (data) => {
 	const { id, city } = data;
 
 	if (id) {
@@ -35,11 +33,6 @@ export const addToFavorite = (city) => {
 export const removeFromFavorite = (cityId) => {
 	storageService.remove(cityId);
 	store.dispatch({ type: REMOVE_FAVORITE, id: cityId });
-};
-
-export const initStorage = () => {
-	const storageData = storageService.initLocalStorage();
-	store.dispatch({ type: SET_FAVORITES, favorites: storageData });
 };
 
 // PRIVATE FUNCTIONS

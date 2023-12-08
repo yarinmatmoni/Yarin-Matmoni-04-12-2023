@@ -29,7 +29,7 @@ const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
 				<img
 					src={isEexistInFavorites(locationData.id) ? FavoriteFull : FavoriteEmpty}
 					alt='Favorite'
-					onClick={handleOnClick}
+					onClick={() => handleOnClick()}
 					className='favorite-icon'
 				/>
 			</div>
