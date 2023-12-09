@@ -7,11 +7,7 @@ const Favorites = () => {
 	return (
 		<div className='page-layout'>
 			<h1>My favorites list</h1>
-			{favorites && favorites.length > 0 ? (
-				<FavoritesContainer favorites={favorites} />
-			) : (
-				<div>Nothing to see here...</div>
-			)}
+			{favorites?.length > 0 ? <FavoritesContainer favorites={favorites} /> : <div>Nothing to see here...</div>}
 		</div>
 	);
 };
