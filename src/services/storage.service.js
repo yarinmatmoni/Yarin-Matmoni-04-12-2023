@@ -2,6 +2,8 @@ const FAVORITES = 'favorites';
 
 const initLocalStorage = () => {
 	const exist = localStorage.getItem(FAVORITES);
+	debugger;
+	console.log(exist);
 	if (!exist) {
 		localStorage.setItem(FAVORITES, JSON.stringify([]));
 		return [];
