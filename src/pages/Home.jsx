@@ -6,11 +6,14 @@ import { useLocation } from 'react-router-dom';
 
 const Home = () => {
 	const [input, setInput] = useState('Tel Aviv');
+	const [isLoading, setIsLoading] = useState(false);
 	const { state } = useLocation();
 
 	useEffect(() => {
 		if (!state) loadWeatherData(input);
-		else loadFavoriteData(state);
+		else {
+			loadFavoriteData(state);
+		}
 	}, []);
 
 	const locationData = useSelector((storeState) => storeState.locationData);
@@ -21,14 +24,16 @@ const Home = () => {
 		if (favorites?.length > 0) return favorites?.some((favorite) => favorite.locationData.id === cityId);
 	};
 
-	const onSearch = () => {
-		loadWeatherData(input);
+	const onSearch = async () => {
+		setIsLoading(true);
+		await loadWeatherData(input);
+		setIsLoading(false);
 	};
 
 	return (
 		<div className='page-layout home'>
 			<Search input={input} setInput={setInput} onSearch={onSearch} />
-			{currentWeather ? (
+			{!isLoading && currentWeather ? (
 				<Forecast
 					locationData={locationData}
 					currentWeather={currentWeather}
