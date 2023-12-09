@@ -3,10 +3,10 @@
 	display: grid;
 	grid-template-rows: auto 1fr;
 	gap: 20px;
-}
 
-@include desktop {
-	.home {
-		height: calc(100vh - $header-h-desktop);
+	@include desktop {
+		& {
+			height: calc(100vh - $header-h-desktop);
+		}
 	}
 }

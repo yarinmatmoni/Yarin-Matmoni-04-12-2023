@@ -1,31 +1,27 @@
-import { loadWeatherData } from '../store/actions/weather.action';
 import { weatherService } from '../services/weather.service';
 import { toast } from 'react-toastify';
 
-const Search = ({ input, setInput }) => {
+const Search = ({ input, setInput, onSearch }) => {
 	const handleOnChange = (event) => {
 		setInput(() => event.target.value);
 	};
 
-	const handleOnClick = () => {
+	const handleOnClick = (e) => {
+		e.preventDefault();
 		const isValid = weatherService.isValidSearch(input);
 		if (isValid) {
-			loadWeatherData(input);
+			onSearch();
 			setInput('');
 		} else toast.error('Invalid input - English letters only');
 	};
 
-	const handleOnEnter = (event) => {
-		if (event.key === 'Enter') {
-			handleOnClick();
-		}
-	};
-
 	return (
-		<div className='search'>
-			<input type='text' placeholder='Search...' value={input} onChange={handleOnChange} onKeyDown={handleOnEnter} />
-			<button onClick={handleOnClick}>Search</button>
-		</div>
+		<form className='search'>
+			<input type='text' placeholder='Search...' value={input} onChange={handleOnChange} />
+			<button type='submit' onClick={handleOnClick}>
+				Search
+			</button>
+		</form>
 	);
 };
 

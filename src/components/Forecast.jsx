@@ -25,30 +25,28 @@ const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
 		else removeFromFavorite(locationData);
 	};
 
+	if (!currentWeather || !locationData || !weatherIcon) {
+		return;
+	}
+
 	return (
-		currentWeather &&
-		locationData &&
-		weatherIcon && (
-			<>
-				<div className='forecast'>
-					<div className='forecast-current'>
-						{weatherIcon && <img src={weatherIcon} alt='Forecast icon' />}
-						<div className='forecast-description'>
-							<div className='city'>{locationData.city}</div>
-							<div className='forecast-title'>{currentWeather.text}</div>
-							<div className='temp'>{currentWeather.temp}</div>
-						</div>
-						<img
-							src={isEexistInFavorites(locationData.id) ? FavoriteFull : FavoriteEmpty}
-							alt='Favorite'
-							onClick={() => handleOnClick()}
-							className='favorite-icon'
-						/>
-					</div>
-					<CardContainer />
+		<div className='forecast'>
+			<div className='forecast-current'>
+				{weatherIcon && <img src={weatherIcon} alt='Forecast icon' />}
+				<div className='forecast-description'>
+					<div className='city'>{locationData.city}</div>
+					<div className='forecast-title'>{currentWeather.text}</div>
+					<div className='temp'>{currentWeather.temp}</div>
 				</div>
-			</>
-		)
+				<img
+					src={isEexistInFavorites(locationData.id) ? FavoriteFull : FavoriteEmpty}
+					alt='Favorite'
+					onClick={() => handleOnClick()}
+					className='favorite-icon'
+				/>
+			</div>
+			<CardContainer />
+		</div>
 	);
 };
 

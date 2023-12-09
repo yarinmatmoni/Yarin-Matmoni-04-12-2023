@@ -27,18 +27,16 @@ const FavoriteCard = ({ data }) => {
 
 	return (
 		weather && (
-			<>
-				<div className='fav-card' onClick={() => onSelectCard(data.locationData.id, data.locationData.city)}>
-					<div className='fav-card-details'>
-						<div className='fav-card-title'>{data.locationData.city}</div>
-						<div className='fav-card-weather'>
-							<div className='fav-card-desc'>{weather.text}</div>
-							<div className='fav-card-temp'>{weather.temp}</div>
-						</div>
+			<div className='fav-card' onClick={() => onSelectCard(data.locationData.id, data.locationData.city)}>
+				<div className='fav-card-details'>
+					<div className='fav-card-title'>{data.locationData.city}</div>
+					<div className='fav-card-weather'>
+						<div className='fav-card-desc'>{weather.text}</div>
+						<div className='fav-card-temp'>{weather.temp}</div>
 					</div>
-					<img src={FavoriteFull} alt='Favorite Icon' onClick={(event) => onSetFavorite(event, data.locationData)} />
 				</div>
-			</>
+				<img src={FavoriteFull} alt='Favorite Icon' onClick={(event) => onSetFavorite(event, data.locationData)} />
+			</div>
 		)
 	);
 };

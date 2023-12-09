@@ -21,9 +21,13 @@ const Home = () => {
 		if (favorites?.length > 0) return favorites?.some((favorite) => favorite.locationData.id === cityId);
 	};
 
+	const onSearch = () => {
+		loadWeatherData(input);
+	};
+
 	return (
 		<div className='page-layout home'>
-			<Search input={input} setInput={setInput} />
+			<Search input={input} setInput={setInput} onSearch={onSearch} />
 			{currentWeather ? (
 				<Forecast
 					locationData={locationData}
