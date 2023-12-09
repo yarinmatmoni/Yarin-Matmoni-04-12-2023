@@ -41,7 +41,7 @@ export const removeFromFavorite = (cityData) => {
 const loadLocationData = async (input) => {
 	try {
 		const locationResponse = await fetch(
-			`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY&q=${input}`,
+			`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY&q=${input}`,
 		);
 
 		if (locationResponse.status === 200) {
@@ -62,7 +62,7 @@ const loadCurrentWeather = async (cityId) => {
 	try {
 		const id = cityId ? cityId : store.getState().locationData.id;
 		const currentWeatherResponse = await fetch(
-			`http://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
+			`https://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
 		);
 		if (currentWeatherResponse.status === 200) {
 			const currentWeather = await currentWeatherResponse.json();
@@ -84,7 +84,7 @@ const loadFutureWeather = async (cityId) => {
 	try {
 		const id = cityId ? cityId : store.getState().locationData.id;
 		const futureWeatherResponse = await fetch(
-			`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${id}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
+			`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${id}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
 		);
 
 		if (futureWeatherResponse.status === 200) {
