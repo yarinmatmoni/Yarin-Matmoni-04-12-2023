@@ -13,6 +13,8 @@ const initialState = {
 	favorites: storageService.initLocalStorage(),
 };
 
+console.log(storageService.initLocalStorage());
+
 export const weatherReducer = (state = initialState, action = {}) => {
 	switch (action.type) {
 		case SET_LOCATION_DATA:
