@@ -13,7 +13,6 @@ const Home = () => {
 		else loadFavoriteData(state);
 	}, []);
 
-	debugger;
 	const locationData = useSelector((storeState) => storeState.locationData);
 	const currentWeather = useSelector((storeState) => storeState.currentWeather);
 	const favorites = useSelector((storeState) => storeState.favorites);

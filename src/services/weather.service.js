@@ -31,7 +31,7 @@ const getDayOfWeekFromDate = (date) => {
 const getWeather = async (cityId) => {
 	try {
 		const currentWeatherResponse = await fetch(
-			`http://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
+			`https://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
 		);
 		if (currentWeatherResponse.status === 200) {
 			const currentWeather = await currentWeatherResponse.json();
