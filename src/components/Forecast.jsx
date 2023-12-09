@@ -22,7 +22,7 @@ const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
 
 	const handleOnClick = () => {
 		if (!isEexistInFavorites(locationData.id)) addToFavorite({ locationData });
-		else removeFromFavorite(locationData.id);
+		else removeFromFavorite(locationData);
 	};
 
 	return (

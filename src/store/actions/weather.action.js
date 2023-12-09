@@ -8,6 +8,7 @@ import {
 import { weatherService } from '../../services/weather.service';
 import { storageService } from '../../services/storage.service';
 import { store } from '../store';
+import { toast } from 'react-toastify';
 
 export const loadWeatherData = async (input) => {
 	await loadLocationData(input);
@@ -30,9 +31,10 @@ export const addToFavorite = (city) => {
 	store.dispatch({ type: ADD_FAVORITE, favorite: city });
 };
 
-export const removeFromFavorite = (cityId) => {
-	storageService.remove(cityId);
-	store.dispatch({ type: REMOVE_FAVORITE, id: cityId });
+export const removeFromFavorite = (cityData) => {
+	storageService.remove(cityData.id);
+	store.dispatch({ type: REMOVE_FAVORITE, id: cityData.id });
+	toast.info(`${cityData.city} removed from favorites list`);
 };
 
 // PRIVATE FUNCTIONS
@@ -52,6 +54,7 @@ const loadLocationData = async (input) => {
 		}
 	} catch (error) {
 		console.log('error:', error);
+		toast.error('This location is not found');
 	}
 };
 

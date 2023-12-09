@@ -1,5 +1,6 @@
 import { loadWeatherData } from '../store/actions/weather.action';
 import { weatherService } from '../services/weather.service';
+import { toast } from 'react-toastify';
 
 const Search = ({ input, setInput }) => {
 	const handleOnChange = (event) => {
@@ -11,7 +12,7 @@ const Search = ({ input, setInput }) => {
 		if (isValid) {
 			loadWeatherData(input);
 			setInput('');
-		} else console.log('Error');
+		} else toast.error('Invalid input - English letters only');
 	};
 
 	const handleOnEnter = (event) => {

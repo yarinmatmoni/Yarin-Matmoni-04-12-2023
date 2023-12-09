@@ -20,9 +20,9 @@ const FavoriteCard = ({ data }) => {
 		navigate('/', { state: { id, city } });
 	};
 
-	const onSetFavorite = (event, id) => {
+	const onSetFavorite = (event, city) => {
 		event.stopPropagation();
-		removeFromFavorite(id);
+		removeFromFavorite(city);
 	};
 
 	return (
@@ -36,7 +36,7 @@ const FavoriteCard = ({ data }) => {
 							<div className='fav-card-temp'>{weather.temp}</div>
 						</div>
 					</div>
-					<img src={FavoriteFull} alt='Favorite Icon' onClick={(event) => onSetFavorite(event, data.locationData.id)} />
+					<img src={FavoriteFull} alt='Favorite Icon' onClick={(event) => onSetFavorite(event, data.locationData)} />
 				</div>
 			</>
 		)
