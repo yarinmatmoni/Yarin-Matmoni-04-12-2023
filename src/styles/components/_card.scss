@@ -17,6 +17,14 @@
 		gap: 10px;
 		margin-top: 10px;
 
+		&[data-unit='false'] {
+			.temp-item {
+				&::after {
+					content: '\2109';
+				}
+			}
+		}
+
 		.temp-item {
 			display: flex;
 			align-items: flex-start;

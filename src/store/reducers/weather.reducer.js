@@ -5,12 +5,14 @@ export const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER';
 export const SET_FUTURE_WEATHER = 'SET_FUTURE_WEATHER';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+export const SET_UNIT = 'SET_UNIT';
 
 const initialState = {
 	locationData: null,
 	currentWeather: null,
 	futureWeather: [],
 	favorites: storageService.initLocalStorage(),
+	celsiusUnit: true,
 };
 
 export const weatherReducer = (state = initialState, action = {}) => {
@@ -39,6 +41,11 @@ export const weatherReducer = (state = initialState, action = {}) => {
 			return {
 				...state,
 				favorites: state.favorites.filter((favorite) => favorite.locationData.id !== action.id),
+			};
+		case SET_UNIT:
+			return {
+				...state,
+				celsiusUnit: !state.celsiusUnit,
 			};
 		default:
 			return state;

@@ -19,6 +19,7 @@ const Home = () => {
 	const locationData = useSelector((storeState) => storeState.locationData);
 	const currentWeather = useSelector((storeState) => storeState.currentWeather);
 	const favorites = useSelector((storeState) => storeState.favorites);
+	const unit = useSelector((storeState) => storeState.celsiusUnit);
 
 	const isEexistInFavorites = (cityId) => {
 		if (favorites?.length > 0) return favorites?.some((favorite) => favorite.locationData.id === cityId);
@@ -32,9 +33,10 @@ const Home = () => {
 
 	return (
 		<div className='page-layout home'>
-			<Search input={input} setInput={setInput} onSearch={onSearch} />
+			<Search input={input} setInput={setInput} onSearch={onSearch} unit={unit} />
 			{!isLoading && currentWeather ? (
 				<Forecast
+					unit={unit}
 					locationData={locationData}
 					currentWeather={currentWeather}
 					isEexistInFavorites={isEexistInFavorites}

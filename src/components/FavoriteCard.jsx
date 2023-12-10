@@ -4,7 +4,7 @@ import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
 import { removeFromFavorite } from '../store/actions/weather.action';
 import { weatherService } from '../services/weather.service';
 
-const FavoriteCard = ({ data }) => {
+const FavoriteCard = ({ data, unit }) => {
 	const [weather, setWeather] = useState(null);
 	const navigate = useNavigate();
 
@@ -32,7 +32,9 @@ const FavoriteCard = ({ data }) => {
 					<div className='fav-card-title'>{data.locationData.city}</div>
 					<div className='fav-card-weather'>
 						<div className='fav-card-desc'>{weather.text}</div>
-						<div className='fav-card-temp'>{weather.temp}</div>
+						<div className='fav-card-temp' data-unit={unit}>
+							{unit ? weather.temp : weatherService.celsiusToFahrenheit(weather.temp)}
+						</div>
 					</div>
 				</div>
 				<img src={FavoriteFull} alt='Favorite Icon' onClick={(event) => onSetFavorite(event, data.locationData)} />

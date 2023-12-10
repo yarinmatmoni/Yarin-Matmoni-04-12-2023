@@ -27,6 +27,12 @@
 					content: '\2103';
 					color: $primary-color;
 				}
+
+				&[data-unit='false'] {
+					&::after {
+						content: '\2109';
+					}
+				}
 			}
 		}
 	}

@@ -4,6 +4,7 @@ import {
 	SET_FUTURE_WEATHER,
 	ADD_FAVORITE,
 	REMOVE_FAVORITE,
+	SET_UNIT,
 } from '../reducers/weather.reducer';
 import { weatherService } from '../../services/weather.service';
 import { storageService } from '../../services/storage.service';
@@ -35,6 +36,10 @@ export const removeFromFavorite = (cityData) => {
 	storageService.remove(cityData.id);
 	store.dispatch({ type: REMOVE_FAVORITE, id: cityData.id });
 	toast.info(`${cityData.city} removed from favorites list`);
+};
+
+export const setUnit = () => {
+	store.dispatch({ type: SET_UNIT });
 };
 
 // PRIVATE FUNCTIONS

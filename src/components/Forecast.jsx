@@ -5,7 +5,7 @@ import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
 import { addToFavorite, removeFromFavorite } from '../store/actions/weather.action';
 import { CardContainer } from './index';
 
-const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
+const Forecast = ({ locationData, currentWeather, isEexistInFavorites, unit }) => {
 	const [weatherIcon, setWeatherIcon] = useState(null);
 
 	useEffect(() => {
@@ -36,7 +36,9 @@ const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
 				<div className='forecast-description'>
 					<div className='city'>{locationData.city}</div>
 					<div className='forecast-title'>{currentWeather.text}</div>
-					<div className='temp'>{currentWeather.temp}</div>
+					<div className='temp' data-unit={unit}>
+						{unit ? currentWeather.temp : weatherService.celsiusToFahrenheit(currentWeather.temp)}
+					</div>
 				</div>
 				<img
 					src={isEexistInFavorites(locationData.id) ? FavoriteFull : FavoriteEmpty}
@@ -45,7 +47,7 @@ const Forecast = ({ locationData, currentWeather, isEexistInFavorites }) => {
 					className='favorite-icon'
 				/>
 			</div>
-			<CardContainer />
+			<CardContainer unit={unit} />
 		</div>
 	);
 };

@@ -21,6 +21,11 @@ const fahrenheitToCelsius = (f) => {
 	return celsius;
 };
 
+const celsiusToFahrenheit = (c) => {
+	const fahrenheit = ((9 / 5) * c + 32).toFixed(1);
+	return fahrenheit;
+};
+
 const getDayOfWeekFromDate = (date) => {
 	const dateObj = new Date(date);
 	const options = { weekday: 'long' };
@@ -58,4 +63,5 @@ export const weatherService = {
 	isValidSearch,
 	getWeather,
 	loadDynamicImage,
+	celsiusToFahrenheit,
 };
