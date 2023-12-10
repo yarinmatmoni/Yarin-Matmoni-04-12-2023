@@ -3,23 +3,29 @@ import { useSelector } from 'react-redux';
 import { Search, Forecast } from '../components/index';
 import { loadFavoriteData, loadWeatherData } from '../store/actions/weather.action';
 import { useLocation } from 'react-router-dom';
+import { userService } from '../services/user.service';
 
 const Home = () => {
-	const [input, setInput] = useState('Tel Aviv');
+	const [input, setInput] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const { state } = useLocation();
 
 	useEffect(() => {
-		if (!state) loadWeatherData(input);
-		else {
-			loadFavoriteData(state);
-		}
+		if (!state) {
+			getCurrentLocation();
+		} else loadFavoriteData(state);
 	}, []);
 
 	const locationData = useSelector((storeState) => storeState.locationData);
 	const currentWeather = useSelector((storeState) => storeState.currentWeather);
 	const favorites = useSelector((storeState) => storeState.favorites);
 	const unit = useSelector((storeState) => storeState.celsiusUnit);
+
+	const getCurrentLocation = async () => {
+		const currentLocation = await userService.getUserLocation();
+		const geoLocation = await userService.getLocationName(currentLocation);
+		loadWeatherData(geoLocation.cityName);
+	};
 
 	const isEexistInFavorites = (cityId) => {
 		if (favorites?.length > 0) return favorites?.some((favorite) => favorite.locationData.id === cityId);
