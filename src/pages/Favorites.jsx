@@ -6,16 +6,14 @@ const Favorites = () => {
 	const unit = useSelector((storeState) => storeState.celsiusUnit);
 
 	return (
-		favorites && (
-			<div className='page-layout favorites'>
-				<h1>My favorites list</h1>
-				{favorites?.length > 0 ? (
-					<FavoritesContainer favorites={favorites} unit={unit} />
-				) : (
-					<div>Nothing to see here...</div>
-				)}
-			</div>
-		)
+		<div className='page-layout favorites'>
+			<h1>My favorites list</h1>
+			{favorites?.length > 0 ? (
+				<FavoritesContainer favorites={favorites} unit={unit} />
+			) : (
+				<div>Nothing to see here...</div>
+			)}
+		</div>
 	);
 };
 
