@@ -1,4 +1,6 @@
-const getUserLocation = async () => {
+import { urlsService } from './urls.service';
+
+const getUserLatLan = async () => {
 	return new Promise((resolve, reject) => {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(
@@ -25,20 +27,15 @@ const getLocationName = async (location) => {
 		const { latitude, longitude } = location;
 		const locationString = `${latitude},${longitude}`;
 
-		const response = await fetch(
-			`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY&q=${locationString}`,
-		);
+		const response = await fetch(urlsService.getGeoLocationUrl(locationString));
 
 		if (response.status === 200) {
 			const body = await response.json();
-			return {
-				cityName: body.EnglishName,
-				id: body.Key,
-			};
+			return body.EnglishName;
 		}
 	} catch (error) {
 		console.log('error:', error);
 	}
 };
 
-export const userService = { getUserLocation, getLocationName };
+export const userService = { getUserLatLan, getLocationName };

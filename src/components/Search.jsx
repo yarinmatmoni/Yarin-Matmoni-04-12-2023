@@ -7,17 +7,14 @@ const Search = ({ input, setInput, onSearch, unit }) => {
 		setInput(() => event.target.value);
 	};
 
-	const handleOnClick = (e) => {
-		e.preventDefault();
+	const handleOnClick = (event) => {
+		event.preventDefault();
 		const isValid = weatherService.isValidSearch(input);
+
 		if (isValid) {
 			onSearch();
 			setInput('');
 		} else toast.error('Invalid input - English letters only');
-	};
-
-	const handleOnSetUnit = () => {
-		setUnit();
 	};
 
 	return (
@@ -26,7 +23,7 @@ const Search = ({ input, setInput, onSearch, unit }) => {
 			<button type='submit' onClick={handleOnClick}>
 				Search
 			</button>
-			<div className='unit' data-unit={unit} onClick={() => handleOnSetUnit()} />
+			<div className='unit' data-unit={unit} onClick={() => setUnit()} />
 		</form>
 	);
 };

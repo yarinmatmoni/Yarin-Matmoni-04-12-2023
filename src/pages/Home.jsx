@@ -22,9 +22,9 @@ const Home = () => {
 	const unit = useSelector((storeState) => storeState.celsiusUnit);
 
 	const getCurrentLocation = async () => {
-		const currentLocation = await userService.getUserLocation();
-		const geoLocation = await userService.getLocationName(currentLocation);
-		loadWeatherData(geoLocation.cityName);
+		const currentLatLan = await userService.getUserLatLan();
+		const locationName = await userService.getLocationName(currentLatLan);
+		loadWeatherData(locationName);
 	};
 
 	const isEexistInFavorites = (cityId) => {

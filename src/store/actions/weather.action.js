@@ -19,8 +19,8 @@ export const loadWeatherData = async (input) => {
 	loadFutureWeather();
 };
 
-export const loadFavoriteData = (data) => {
-	const { id, city } = data;
+export const loadFavoriteData = (favData) => {
+	const { id, city } = favData;
 
 	if (id) {
 		loadLocationData(city);
@@ -97,7 +97,6 @@ const loadFutureWeather = async (cityId) => {
 			const futureWeather = await futureWeatherResponse.json();
 
 			const futureWeatherArray = futureWeather.DailyForecasts.map((weather) => ({
-				id: weatherService.makeId(),
 				date: weatherService.getDayOfWeekFromDate(weather.Date),
 				minTemp: weatherService.fahrenheitToCelsius(weather.Temperature.Minimum.Value),
 				maxTemp: weatherService.fahrenheitToCelsius(weather.Temperature.Maximum.Value),

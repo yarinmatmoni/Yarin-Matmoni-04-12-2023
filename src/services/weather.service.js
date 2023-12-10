@@ -1,15 +1,5 @@
 import { urlsService } from '../services/urls.service';
 
-const makeId = () => {
-	let text = '';
-	const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-	for (let i = 0; i < 5; i++) {
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
-	}
-	return text;
-};
-
 const isValidSearch = (input) => {
 	if (input !== '') {
 		const englishTemplate = /^[A-Za-z ]*$/;
@@ -58,7 +48,6 @@ const loadDynamicImage = async (iconId) => {
 };
 
 export const weatherService = {
-	makeId,
 	fahrenheitToCelsius,
 	getDayOfWeekFromDate,
 	isValidSearch,
