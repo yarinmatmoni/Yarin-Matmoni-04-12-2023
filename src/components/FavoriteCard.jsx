@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
+import FavoriteFull from '../assets/svg/favorite-full.svg';
 import { removeFromFavorite } from '../store/actions/weather.action';
 import { weatherService } from '../services/weather.service';
 

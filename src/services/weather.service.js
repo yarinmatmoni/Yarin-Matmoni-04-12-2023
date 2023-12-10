@@ -1,3 +1,5 @@
+import { urlsService } from '../services/urls.service';
+
 const makeId = () => {
 	let text = '';
 	const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -35,9 +37,8 @@ const getDayOfWeekFromDate = (date) => {
 
 const getWeather = async (cityId) => {
 	try {
-		const currentWeatherResponse = await fetch(
-			`https://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
-		);
+		const currentWeatherResponse = await fetch(urlsService.getCurrentWeatherUrl(cityId));
+
 		if (currentWeatherResponse.status === 200) {
 			const currentWeather = await currentWeatherResponse.json();
 			return { temp: currentWeather[0].Temperature.Metric.Value, text: currentWeather[0].WeatherText };
@@ -49,7 +50,7 @@ const getWeather = async (cityId) => {
 
 const loadDynamicImage = async (iconId) => {
 	try {
-		const weatherIconModule = await import(`../assets/weatherIcons/${iconId}.svg`);
+		const weatherIconModule = await import(`../assets/svg/weatherIcons/${iconId}.svg`);
 		return weatherIconModule.default;
 	} catch (error) {
 		console.error('Error loading weather icon:', error);

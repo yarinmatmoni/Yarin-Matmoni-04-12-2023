@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { weatherService } from '../services/weather.service';
-import FavoriteEmpty from '../assets/svg/favorite-empty-svg.svg';
-import FavoriteFull from '../assets/svg/favorite-full-svg.svg';
+import FavoriteEmpty from '../assets/svg/favorite-empty.svg';
+import FavoriteFull from '../assets/svg/favorite-full.svg';
 import { addToFavorite, removeFromFavorite } from '../store/actions/weather.action';
 import { CardContainer } from './index';
 

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Card } from './index';
+import { WeatherCard } from './index';
 
 const CardContainer = ({ unit }) => {
 	const futureWeather = useSelector((storeState) => storeState.futureWeather);
@@ -7,7 +7,7 @@ const CardContainer = ({ unit }) => {
 	return (
 		<div className='card-container'>
 			{futureWeather?.map((day) => (
-				<Card key={day.id} data={day} unit={unit} />
+				<WeatherCard key={day.id} data={day} unit={unit} />
 			))}
 		</div>
 	);

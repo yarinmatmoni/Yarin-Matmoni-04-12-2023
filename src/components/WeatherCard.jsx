@@ -1,8 +1,8 @@
 import { weatherService } from '../services/weather.service';
-import MinTemp from '../assets/svg/minTemp-svg.svg';
-import MaxTemp from '../assets/svg/maxTamp-svg.svg';
+import MinTemp from '../assets/svg/minTemp.svg';
+import MaxTemp from '../assets/svg/maxTamp.svg';
 
-const Card = ({ data, unit }) => {
+const WeatherCard = ({ data, unit }) => {
 	return (
 		<div className='card'>
 			<div className='day'>{data.date}</div>
@@ -20,4 +20,4 @@ const Card = ({ data, unit }) => {
 	);
 };
 
-export default Card;
+export default WeatherCard;

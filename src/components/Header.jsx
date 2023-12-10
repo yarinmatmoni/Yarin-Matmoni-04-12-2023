@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { setColorMode } from '../store/actions/weather.action';
-import Logo from '../assets/svg/logo-svg.svg';
+import Logo from '../assets/svg/logo.svg';
 import Sun from '../assets/svg/sun.svg';
 import Moon from '../assets/svg/moon.svg';
 

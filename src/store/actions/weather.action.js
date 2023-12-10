@@ -9,6 +9,7 @@ import {
 } from '../reducers/weather.reducer';
 import { weatherService } from '../../services/weather.service';
 import { storageService } from '../../services/storage.service';
+import { urlsService } from '../../services/urls.service';
 import { store } from '../store';
 import { toast } from 'react-toastify';
 
@@ -50,9 +51,7 @@ export const setColorMode = () => {
 // PRIVATE FUNCTIONS
 const loadLocationData = async (input) => {
 	try {
-		const locationResponse = await fetch(
-			`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY&q=${input}`,
-		);
+		const locationResponse = await fetch(urlsService.getLocationUrl(input));
 
 		if (locationResponse.status === 200) {
 			const location = await locationResponse.json();
@@ -71,9 +70,8 @@ const loadLocationData = async (input) => {
 const loadCurrentWeather = async (cityId) => {
 	try {
 		const id = cityId ? cityId : store.getState().locationData.id;
-		const currentWeatherResponse = await fetch(
-			`https://dataservice.accuweather.com/currentconditions/v1/${id}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
-		);
+		const currentWeatherResponse = await fetch(urlsService.getCurrentWeatherUrl(id));
+
 		if (currentWeatherResponse.status === 200) {
 			const currentWeather = await currentWeatherResponse.json();
 			store.dispatch({
@@ -93,9 +91,7 @@ const loadCurrentWeather = async (cityId) => {
 const loadFutureWeather = async (cityId) => {
 	try {
 		const id = cityId ? cityId : store.getState().locationData.id;
-		const futureWeatherResponse = await fetch(
-			`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${id}?apikey=XIfD99Ghh4wZGVWgqTkJsOiRCycLU1xY`,
-		);
+		const futureWeatherResponse = await fetch(urlsService.getFutureWeatherUrl(id));
 
 		if (futureWeatherResponse.status === 200) {
 			const futureWeather = await futureWeatherResponse.json();
