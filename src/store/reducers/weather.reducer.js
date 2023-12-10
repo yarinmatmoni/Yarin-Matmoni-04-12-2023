@@ -6,6 +6,7 @@ export const SET_FUTURE_WEATHER = 'SET_FUTURE_WEATHER';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 export const SET_UNIT = 'SET_UNIT';
+export const SET_COLOR_MODE = 'SET_COLOR_MODE';
 
 const initialState = {
 	locationData: null,
@@ -13,6 +14,7 @@ const initialState = {
 	futureWeather: [],
 	favorites: storageService.initLocalStorage(),
 	celsiusUnit: true,
+	lightMode: true,
 };
 
 export const weatherReducer = (state = initialState, action = {}) => {
@@ -46,6 +48,11 @@ export const weatherReducer = (state = initialState, action = {}) => {
 			return {
 				...state,
 				celsiusUnit: !state.celsiusUnit,
+			};
+		case SET_COLOR_MODE:
+			return {
+				...state,
+				lightMode: !state.lightMode,
 			};
 		default:
 			return state;

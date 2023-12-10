@@ -1,0 +1,10 @@
+.light-mode {
+	transition: all 0.3s ease;
+	background-color: $bg-color;
+	color: $black-color;
+}
+
+.dark-mode {
+	transition: all 0.3s ease;
+	background-color: $bg-color-dark;
+}

@@ -1,0 +1,9 @@
+.favorites {
+	height: calc(100vh - $header-h-mobile);
+
+	@include desktop {
+		& {
+			height: calc(100vh - $header-h-desktop);
+		}
+	}
+}

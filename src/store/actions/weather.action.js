@@ -5,6 +5,7 @@ import {
 	ADD_FAVORITE,
 	REMOVE_FAVORITE,
 	SET_UNIT,
+	SET_COLOR_MODE,
 } from '../reducers/weather.reducer';
 import { weatherService } from '../../services/weather.service';
 import { storageService } from '../../services/storage.service';
@@ -40,6 +41,10 @@ export const removeFromFavorite = (cityData) => {
 
 export const setUnit = () => {
 	store.dispatch({ type: SET_UNIT });
+};
+
+export const setColorMode = () => {
+	store.dispatch({ type: SET_COLOR_MODE });
 };
 
 // PRIVATE FUNCTIONS
