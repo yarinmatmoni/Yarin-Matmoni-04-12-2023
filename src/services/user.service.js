@@ -1,4 +1,5 @@
 import { urlsService } from './urls.service';
+import { toast } from 'react-toastify';
 
 const getUserLatLan = async () => {
 	return new Promise((resolve, reject) => {
@@ -12,10 +13,12 @@ const getUserLatLan = async () => {
 				},
 				(error) => {
 					console.error('Error getting location:', error);
+					toast.error('Error getting location - Please check your location settings');
 					reject(error);
 				},
 			);
 		} else {
+			toast.error('Geolocation is not supported by your browser');
 			console.error('Geolocation is not supported by your browser');
 			reject(new Error('Geolocation is not supported by your browser'));
 		}
